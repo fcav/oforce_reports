@@ -8,13 +8,13 @@ class reportDB():
 
 	def initTables(self):
 		self.c.execute('''CREATE TABLE IF NOT EXISTS inputData
-                     (Account text, Date text, Device text, 
-                     	Campaign text, Clicks int, Impressions int, 
-                     	Cost real, Conversions int)''')
+                     (Account text, Day text, Device text, Campaign text, Clicks int, Impressions int, Cost real, Converted_clicks real);''')
 
 		self.c.execute('''CREATE TABLE IF NOT EXISTS mapping
-                     (Account text, Campaign text, CountryCode text, 
+                     (Account text, Campaign text, Country text, Country_Code_For_Report text, 
                      	Subregion text, Region text, Brand text, 
-                     	Tier text, Product text, Network text )''')
+                     	Tier text, Product text, Network text );''')
 
 
+a = reportDB()
+print('Script finished.')
