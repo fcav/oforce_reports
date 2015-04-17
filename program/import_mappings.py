@@ -33,7 +33,7 @@ class Mappings():
             headers = r.keys()
             values = ['"{0}"'.format(str(r[key])) for key in headers]
             cur.execute("INSERT INTO mapping ({0}) SELECT {1} WHERE NOT EXISTS (SELECT 1 FROM mapping WHERE Campaign = '{2}');""".format(','.join(headers), ','.join(values), r['Campaign']))
-            cur.execute("UPDATE mapping SET VALUES ({0}) WHERE {1});".format(','.join([h + '=' + r[h] for h in headers if h != 'Campaign']), 'Campaign=' + r['Campaign']))
+            cur.execute("UPDATE mapping SET {0} WHERE Campaign = '{1}';".format(','.join(['{0} = "{1}"'.format(h, y) for h, y in r.items() if h != 'Campaign']), r['Campaign']))
             con.commit()
                 
     
